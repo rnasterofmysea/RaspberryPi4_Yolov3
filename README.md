@@ -67,7 +67,7 @@ cv2.destroyAllWindows()
   python3 test.py
   ```
 
-# Step 2. install Yolo
+# Step 2. install Yolo 
 
 ## install darknet
 
@@ -97,24 +97,57 @@ make
 
 ## Test yolov3
 
-- download pre-trained weights file
+  - download pre-trained weights file
 
 ```
 wget https://pjreddle.com/media/files/yolov3.weights
 ```
 
-- check sample image file
+  - check sample image file
 
 ```
 #darknet/data
 ls data
 ```
 
-- test
+  - test
 
 ```
 ./darknet detect cfg/yolov3.cfg ./yolov3.weights data/dog.jpg
 ```
+
+# Step3. prepare Dataset 
+
+  ## Install Yolomark
+  
+    - clone github
+  
+  ```
+  git clone https://github.com/AlexeyAB/Yolo_mark
+  ```
+    - compile yolomark
+  
+  ```
+  cmake .
+make
+chmod u+x ./linux_mark.sh
+./linux_mark.sh
+  ```
+  
+  ![image](https://user-images.githubusercontent.com/81907470/178654309-7a3d0b27-7e98-42b1-b0bb-965644588ab8.png)
+
+  ## Delete sample image
+  
+  ```
+  cd yolo_mark/x64/Release/data/img
+  rm *
+  ```
+  
+  ## Dataset images download
+  
+  - https://kdx.kr/data/view/31083
+  -
+
 # Testing Board
 
 ## 1. test with pre-trained weights + gas meter images
