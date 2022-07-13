@@ -42,7 +42,7 @@ sudo apt-get install -y libatlas-base-dev libhdf5-dev libhdf5-serial-dev libatla
   
 ## Test openCV
 
-  - save the image 
+  - save the image lenna.png
   
   ![image](https://user-images.githubusercontent.com/81907470/178634964-577db4ff-8659-42d0-9dc2-ef3af2441ddb.png)
 
@@ -67,4 +67,51 @@ cv2.destroyAllWindows()
   python3 test.py
   ```
 
-  
+# Step 2. install Yolo
+
+## install darknet
+
+- clone darkent
+
+```
+git clone https://github.com/AlexeyAB/darknet
+```
+
+- set config
+
+```
+sudo vi Makefile
+```
+
+```
+# OpenCV = 0 to 1
+OpenCV = 1
+```
+( if you wanna use GPU or others, change to 1)
+
+## make compile
+
+```
+make
+```
+
+## Test yolov3
+
+- download pre-trained weights file
+
+```
+wget https://pjreddle.com/media/files/yolov3.weights
+```
+
+- check sample image file
+
+```
+#darknet/data
+ls data
+```
+
+- test
+
+```
+./darknet detect cfg/yolov3.cfg ./yolov3.weights data/dog.jpg
+```
