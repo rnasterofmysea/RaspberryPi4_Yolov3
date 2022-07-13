@@ -115,6 +115,23 @@ ls data
 ```
 ./darknet detect cfg/yolov3.cfg ./yolov3.weights data/dog.jpg
 ```
+# Testing Board
+
+## 1. test with pre-trained weights + gas meter images
+
+- used image
+
+![gasmeter](https://user-images.githubusercontent.com/81907470/178641063-a31ae2b6-9ad0-4d91-b0d2-5185982da92d.jpg)
+
+- result 
+
+![image](https://user-images.githubusercontent.com/81907470/178641002-638e4b60-9007-42a5-a23d-150a8e12b8d5.png)
+
+ ### summary
+
+  - 사전학습된 weights를 이용할 경우 가스 계측기가 parking meter 로 분류됨
+  - weights를 직접 학습시켜야할 필요성
+  - 한국데이터거래소(https://kdx.kr/data/view/31083)의 계량기 이미지를 이용한 학습 
 
 # Fix Issues 
 
