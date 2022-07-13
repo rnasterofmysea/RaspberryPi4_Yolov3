@@ -1,8 +1,8 @@
 # RaspberryPi4_Yolov3
 
 ## HardWare Spec
-  -Raspberry Pi 4 + SSD
-  -Samsung SC-FD110B FHD (Camera)
+  - Raspberry Pi 4 + SSD
+  - Samsung SC-FD110B FHD (Camera)
 ## Server Envrionment
   - Rasbian (Raspberry Pi 4)
 
@@ -115,3 +115,18 @@ ls data
 ```
 ./darknet detect cfg/yolov3.cfg ./yolov3.weights data/dog.jpg
 ```
+
+# Fix Issues 
+
+## Import Error: numpy.core.multiarray failed to import
+
+  - check numpy version
+  
+  ```
+  pip3 install -U
+  ```
+  
+## Package opencv was not found in the pkg-config search path
+  
+  https://stackoverflow.com/questions/15320267/package-opencv-was-not-found-in-the-pkg-config-search-path
+ 
