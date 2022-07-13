@@ -131,7 +131,7 @@ ls data
 
   - 사전학습된 weights를 이용할 경우 가스 계측기가 parking meter 로 분류됨
   - weights를 직접 학습시켜야할 필요성
-  - 한국데이터거래소(https://kdx.kr/data/view/31083)의 계량기 이미지를 이용한 학습 
+  - 한국데이터거래소(https://kdx.kr/data/view/31083)의 계량기 이미지를 이용한 학습계획
 
 # Fix Issues 
 
