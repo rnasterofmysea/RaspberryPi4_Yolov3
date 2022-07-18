@@ -71,13 +71,13 @@ cv2.destroyAllWindows()
 
 ## install darknet
 
-- clone darkent
+  - clone darkent
 
 ```
 git clone https://github.com/AlexeyAB/darknet
 ```
 
-- set config
+  - set config
 
 ```
 sudo vi Makefile
