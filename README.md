@@ -122,17 +122,18 @@ ls data
   
     - clone github
   
-  ```
+```
   git clone https://github.com/AlexeyAB/Yolo_mark
-  ```
+```
+  
     - compile yolomark
   
-  ```
-  cmake .
+```
+cmake .
 make
 chmod u+x ./linux_mark.sh
 ./linux_mark.sh
-  ```
+```
   
   ![image](https://user-images.githubusercontent.com/81907470/178654309-7a3d0b27-7e98-42b1-b0bb-965644588ab8.png)
 
