@@ -3,6 +3,8 @@
 ## HardWare Spec
   - Raspberry Pi 4 + SSD
   - Samsung SC-FD110B FHD (Camera)
+  - Raspberry pi Camera module
+  - 
 ## Server Envrionment
   - Rasbian (Raspberry Pi 4)
 
@@ -280,6 +282,12 @@ wget https://pjreddie.com/media/files/darknet53.conv.74
 
 ![image](https://user-images.githubusercontent.com/81907470/178641002-638e4b60-9007-42a5-a23d-150a8e12b8d5.png)
 
+   ### summary
+
+  - 사전학습된 weights를 이용할 경우 가스 계측기가 parking meter 로 분류됨
+  - weights를 직접 학습시켜야할 필요성
+  - 한국데이터거래소(https://kdx.kr/data/view/31083)의 계량기 이미지를 이용한 학습계획
+  
 ## 2. setup equipment and test
 
 - take a pic by motion
@@ -290,12 +298,11 @@ wget https://pjreddie.com/media/files/darknet53.conv.74
 
 ![image](https://user-images.githubusercontent.com/81907470/179917014-0af51855-3869-4cf2-a359-d37b3618a2d0.png)
 
- ### summary
-
-  - 사전학습된 weights를 이용할 경우 가스 계측기가 parking meter 로 분류됨
-  - weights를 직접 학습시켜야할 필요성
-  - 한국데이터거래소(https://kdx.kr/data/view/31083)의 계량기 이미지를 이용한 학습계획
-
+  ### summary
+    
+    카메라 설치 후 사진의 화질이 낮아 OCR 문자인식에 장애가 발생될 것이라고 예상됨, 화질부분의 개선이 필요
+    ( 예상 원인: 에어컨 시래기에서 발생하는 진동에 의한 화질저하, 카메라 성능 등)
+  
 # Fix Issues 
 
 ## Import Error: numpy.core.multiarray failed to import
