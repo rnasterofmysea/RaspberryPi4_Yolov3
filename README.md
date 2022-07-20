@@ -151,19 +151,19 @@ chmod u+x ./linux_mark.sh
 
 # Install Yolo_mark
 
-  ## git clone 
+  - git clone 
   
   `
   $ git clone https://github.com/AlexeyAB/Yolo_mark
   `
   
-  ## alter auth
+  - alter auth
   
   `
   $ chmod +x linux_mark.sh
   `
   
-  # execute yolo_mark
+  - execute yolo_mark
   
   `
   $ cmake .
@@ -171,14 +171,15 @@ chmod u+x ./linux_mark.sh
   $ ./linux_mark.sh
   `
   
-  # Delete & insert images
+  - Delete & insert images
   
   `
     $ cd x64/Realease/data
     $ rm -rf *
   `
   
-  -insert new images
+  - insert new images
+  
   https://github.com/AlexeyAB/Yolo_mark
   
 # Testing Board
