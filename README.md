@@ -150,6 +150,9 @@ chmod u+x ./linux_mark.sh
   
   - https://kdx.kr/data/view/31083
   
+  ## How to use Yolo_Mark
+  
+  https://github.com/AlexeyAB/Yolo_mark
 
 
 # Step 4. Custom weights
@@ -316,4 +319,6 @@ wget https://pjreddie.com/media/files/darknet53.conv.74
 ## Package opencv was not found in the pkg-config search path
   
   https://stackoverflow.com/questions/15320267/package-opencv-was-not-found-in-the-pkg-config-search-path
+
+## 
  
