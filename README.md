@@ -178,7 +178,7 @@ chmod u+x ./linux_mark.sh
     $ rm -rf *
   `
   
-  - insert new images
+  -insert new images
   https://github.com/AlexeyAB/Yolo_mark
   
 # Testing Board
