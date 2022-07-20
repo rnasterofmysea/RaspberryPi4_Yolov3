@@ -42,11 +42,11 @@ sudo apt-get install -y libatlas-base-dev libhdf5-dev libhdf5-serial-dev libatla
   
 ## Test openCV
 
-  - save the image lenna.png
+- save the image lenna.png
   
   ![image](https://user-images.githubusercontent.com/81907470/178634964-577db4ff-8659-42d0-9dc2-ef3af2441ddb.png)
 
-  - make test.py
+- make test.py
 
   ```python
   import cv2
@@ -61,7 +61,7 @@ cv2.waitKey(0)
 cv2.destroyAllWindows()
 ```
   
-  - run test.py
+ - run test.py
   
   ```python
   python3 test.py
@@ -147,10 +147,116 @@ chmod u+x ./linux_mark.sh
   ## Dataset images download
   
   - https://kdx.kr/data/view/31083
-  -
-
-
   
+
+
+# Step 4. Custom weights
+
+  ```
+  cd darknet
+  mkdir custom
+  ```
+  
+  ## copy dataset & train.txt
+  
+  ```
+   mkdir x64
+   cd x64
+   mkdir Release
+   cd Release
+   mkdir data
+   cd data
+   
+   cp ../../Yolo_mark/x64/Realse/data/img -r 
+   cp ../../Yolo_mark/x64/Realse/data/train.txt 
+  ```
+  
+  ## make configuration
+  
+  ```
+   cd cfg
+   cp yolov3.cfg ./custom/custom.cfg
+   cd ../../custom
+    vim custom.cfg
+  ```
+  
+  ```
+[convolutional]
+size=1
+stride=1
+pad=1
+filters=60
+activation=linear
+
+
+[yolo]
+mask = 0,1,2
+anchors = 10,13,  16,30,  33,23,  30,61,  62,45,  59,119,  116,90,  156,198,  373,326
+classes=15
+num=9
+jitter=.3
+ignore_thresh = .7
+truth_thresh = 1
+random=1
+  ```
+  
+  edit classes in [yolo] , filters in [convolutional] above yolo
+  ! there are 3 parts in the file
+  
+    classes = number of class in dataset
+    filters = (classes + 5 ) * 3
+     
+ ## make custom.names
+ 
+ - path: ~/darknet/custom
+ 
+ ```
+ vim custom.names
+ ```
+ 
+ - insert class name
+ 
+ ```
+  (ex)
+  dog
+  data
+ ```
+
+  ## make custom.data 
+  
+  - path: ~/darknet/custom
+  
+  ```
+  vim custom.data
+  ```
+  
+  - if you apply valid insert valid info as well
+  -  insert number of classes, train set path, (validation set path), names path, weight path
+  
+  ```
+  classes= 15
+train  = custom/train.txt
+# valid  = custom/validation.txt
+names = custom/custom.names
+backup = backup/
+  ```
+
+## download pretrained model
+
+- path: ~/darknet/custom
+
+```
+wget https://pjreddie.com/media/files/darknet53.conv.74
+```
+
+# Execute tranning
+
+```
+./darknet detector train custom/custom.data custom/custom_yolov3.cfg darknet53.conv.74 | tee backup/train.log
+```
+
+ ! using tee to make logfile
+
 # Testing Board
 
 ## 1. test with pre-trained weights + gas meter images
