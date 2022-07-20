@@ -97,13 +97,13 @@ make
 
 ## Test yolov3
 
-  - download pre-trained weights file
+- download pre-trained weights file
 
 ```
 wget https://pjreddle.com/media/files/yolov3.weights
 ```
 
-  - check sample image file
+- check sample image file
 
 ```
 #darknet/data
