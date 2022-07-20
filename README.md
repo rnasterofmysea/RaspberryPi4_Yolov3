@@ -249,13 +249,24 @@ backup = backup/
 wget https://pjreddie.com/media/files/darknet53.conv.74
 ```
 
-# Execute tranning
+# Execute trainning
 
 ```
 ./darknet detector train custom/custom.data custom/custom_yolov3.cfg darknet53.conv.74 | tee backup/train.log
 ```
 
  ! using tee to make logfile
+
+![image](https://user-images.githubusercontent.com/81907470/179916489-c106697a-4e25-4a36-8627-6e9404f7cadc.png)
+
+
+# Step 5. Place a equipment
+
+![image](https://user-images.githubusercontent.com/81907470/179916788-9a53d2ba-b089-4216-8dec-3255b3e2bcea.png)
+
+
+![image](https://user-images.githubusercontent.com/81907470/179916731-9c95f7e2-f0a2-4dd2-aa39-aef27fbba8cb.png)
+
 
 # Testing Board
 
@@ -268,6 +279,16 @@ wget https://pjreddie.com/media/files/darknet53.conv.74
 - result 
 
 ![image](https://user-images.githubusercontent.com/81907470/178641002-638e4b60-9007-42a5-a23d-150a8e12b8d5.png)
+
+## 2. setup equipment and test
+
+- take a pic by motion
+
+![image](https://user-images.githubusercontent.com/81907470/179916995-021f4169-80cd-4c47-b7a9-8707e3a4389a.png)
+
+- take a pic by raspistill
+
+![image](https://user-images.githubusercontent.com/81907470/179917014-0af51855-3869-4cf2-a359-d37b3618a2d0.png)
 
  ### summary
 
