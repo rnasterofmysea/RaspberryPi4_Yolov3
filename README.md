@@ -149,6 +149,38 @@ chmod u+x ./linux_mark.sh
   - https://kdx.kr/data/view/31083
   -
 
+# Install Yolo_mark
+
+  ## git clone 
+  
+  `
+  $ git clone https://github.com/AlexeyAB/Yolo_mark
+  `
+  
+  ## alter auth
+  
+  `
+  $ chmod +x linux_mark.sh
+  `
+  
+  # execute yolo_mark
+  
+  `
+  $ cmake .
+  $ make
+  $ ./linux_mark.sh
+  `
+  
+  # Delete & insert images
+  
+  `
+    $ cd x64/Realease/data
+    $ rm -rf *
+  `
+  
+  - insert new images
+  https://github.com/AlexeyAB/Yolo_mark
+  
 # Testing Board
 
 ## 1. test with pre-trained weights + gas meter images
