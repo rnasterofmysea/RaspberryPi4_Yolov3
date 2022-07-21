@@ -589,4 +589,6 @@ $CONFIG = array (
 
 ## [Camera Module] Camera v2 from element14 initialization issues
  
+https://community.element14.com/products/raspberry-pi/f/forum/46625/raspiberry-pi-camera-module-error---mmal-mmal_vc_component_enable-failed-to-enable-component-enospc
+
 ![image](https://user-images.githubusercontent.com/81907470/180176931-b5a8b33f-f8d5-4fe9-a4d2-fbf4fc4291db.png)
