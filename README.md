@@ -585,6 +585,8 @@ $CONFIG = array (
     'installed' => true,
 );
 
-
 ```
 
+## [Camera Module] Camera v2 from element14 initialization issues
+ 
+![image](https://user-images.githubusercontent.com/81907470/180176931-b5a8b33f-f8d5-4fe9-a4d2-fbf4fc4291db.png)
