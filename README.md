@@ -73,13 +73,13 @@ cv2.destroyAllWindows()
 
 ## install darknet
 
-  - clone darkent
+- clone darkent
 
 ```
 git clone https://github.com/AlexeyAB/darknet
 ```
 
-  - set config
+- set config
 
 ```
 sudo vi Makefile
@@ -271,6 +271,58 @@ wget https://pjreddie.com/media/files/darknet53.conv.74
 
 
 ![image](https://user-images.githubusercontent.com/81907470/179916731-9c95f7e2-f0a2-4dd2-aa39-aef27fbba8cb.png)
+
+# Step 6. Install motion
+
+## Set Configuration
+
+```
+sudo raspi-config
+```
+
+- Interfacing Option > Camera > Enable
+
+![image](https://user-images.githubusercontent.com/81907470/180117311-c25841b1-85ce-4470-adfb-0bdd43c5d7a9.png)
+
+## Check Camera
+
+```
+vcgencmd get_camera
+```
+
+![image](https://user-images.githubusercontent.com/81907470/180117435-1dbdc886-27cb-4723-8ee3-1ebdae4dd118.png)
+
+## Install motion & setting
+
+- Install motion
+```
+sudo apt-get install motion
+```
+
+- setting
+
+```
+sudo nano /etc/default/motion
+```
+
+### due to external connection allowed
+
+- demon off > demon on : background operation 
+- webcam_localhost on > off
+- stream_port [port number]
+
+### motion setting
+
+- emulate_motion off (default : off)
+- threshold 1500 (motion sensitivity)
+
+## Execute motion
+
+```
+sudo motion
+```
+
+- http://[rasp ip]: stream_port
 
 
 # Testing Board
