@@ -406,7 +406,7 @@ cv2.destroyAllWindows()
   ![image](https://user-images.githubusercontent.com/81907470/180930133-5b0014a6-2483-4fd2-bec2-ce8f4d990762.png)
 
   
-## install tesseract
+## Install tesseract
 
 ```
 sudo apt install tesseract-ocr tesseract-ocr-kor
@@ -446,7 +446,7 @@ text = pytesseract.image_to_string(img2, config='--psm 6')
 print(text)
 ```
   
-## result
+## Result
   
 ```
   python3 ocr.py
