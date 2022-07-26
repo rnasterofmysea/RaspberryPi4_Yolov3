@@ -324,6 +324,52 @@ sudo motion
 
 - http://[rasp ip]: stream_port
 
+# Step 7. Shell Script & Crontab
+
+## make Shell file
+
+- path: home/pi/camera
+
+```
+vim camera_config.sh
+sudo chmod 777 camera_config.sh
+```
+
+- create directory as date
+- capture a pic & save as datetime
+
+```
+#! /bin/bash
+
+DATE1=$(date +"%Y-%m-%d")
+CreateDIR=/home/pi/camera/images/$DATE1
+
+if [ ! -d $CreateDIR ]; then
+        mkdir $CreateDIR
+fi
+
+DATE2=$(date +"%Y-%m-%d_%H%M")
+raspistill -q 100 -t 1000 -o  /home/pi/camera/images/$DATE1/$DATE2.jpg
+```
+
+## Edit crontab
+
+- take a pic every 5 min
+
+```
+# every 5 min take pic
+
+*/5 * * * * home/pi/camera/camera_config.sh
+
+# * * * * * /home/pi/camera/camera_config.sh
+
+```
+
+## Result
+
+![image](https://user-images.githubusercontent.com/81907470/180920763-c5e2b897-91a9-433c-a923-bc9d7214e2e4.png)
+
+
 
 # Next Cloud
 
@@ -538,6 +584,7 @@ sudo nginx -s reload
     
     카메라 설치 후 사진의 화질이 낮아 OCR 문자인식에 장애가 발생될 것이라고 예상됨, 화질부분의 개선이 필요
     ( 예상 원인: 에어컨 시래기에서 발생하는 진동에 의한 화질저하, 카메라 성능 등)
+    >> fixed
   
 # Fix Issues 
 
