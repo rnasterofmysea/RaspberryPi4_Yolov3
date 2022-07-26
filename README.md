@@ -339,6 +339,7 @@ sudo chmod 777 camera_config.sh
 - capture a pic & save as datetime
 
 ```
+
 #! /bin/bash
 
 DATE1=$(date +"%Y-%m-%d")
@@ -349,7 +350,8 @@ if [ ! -d $CreateDIR ]; then
 fi
 
 DATE2=$(date +"%Y-%m-%d_%H%M")
-raspistill -q 100 -t 1000 -o  /home/pi/camera/images/$DATE1/$DATE2.jpg
+raspistill -q 100 -t 1000 -w 800 -h 600 -o  /home/pi/camera/images/$DATE1/$DATE2.jpg
+
 ```
 
 ## Edit crontab
@@ -369,8 +371,93 @@ raspistill -q 100 -t 1000 -o  /home/pi/camera/images/$DATE1/$DATE2.jpg
 
 ![image](https://user-images.githubusercontent.com/81907470/180920763-c5e2b897-91a9-433c-a923-bc9d7214e2e4.png)
 
+# Step 8. Tesseract OCR
 
+  ## find out x,y postion
+  
+  - path: /home/pi/camera
+  
+  - take sample image
+  ```
+  raspistill -q 100 -t 1000 -w 800 -h 600 -o set_index.jph
+  ```
+  - Make set_index.py
+  
+  ```  
+import cv2
 
+img = cv2.imread("./set_index.jpg")
+
+x_pos, y_pos, width, height = cv2.selectROI("location", img, False)
+print("x, y :: ", x_pos, y_pos)
+print("width, height :: ", width, height)
+
+cv2.destroyAllWindows()
+  ```
+  
+  ```
+  python3 set_index.py
+  ```
+  
+  - copy x & y , width & height 
+  
+  ![image](https://user-images.githubusercontent.com/81907470/180930117-16e1fc8e-a32c-46f6-ae54-d5443673d6ee.png)
+
+  ![image](https://user-images.githubusercontent.com/81907470/180930133-5b0014a6-2483-4fd2-bec2-ce8f4d990762.png)
+
+  
+## install tesseract
+
+```
+sudo apt install tesseract-ocr tesseract-ocr-kor
+
+sudo apt install tesseract-ocr-script-hang tesseract-ocr-script-hang-vert
+
+sudo pip3 install pytesseract
+
+pip3 install pytesseract
+  
+```
+  
+## Make ocr.py
+  
+- path: home/pi/camera
+
+```
+vim ocr.py
+```
+  
+```
+from pytesseract import *
+import re
+import numpy as np
+import cv2
+
+img = cv2.imread("./set_index.jpg")
+
+## !!!! paste here !!!
+x=174;y=147;w=563;h=87;
+  
+roi = img[y:y+h, x:x+w]
+img2 = roi.copy()
+
+text = pytesseract.image_to_string(img2, config='--psm 6')
+
+print(text)
+```
+  
+## result
+  
+```
+  python3 ocr.py
+```
+  
+  ![image](https://user-images.githubusercontent.com/81907470/180930349-8e9e0f06-1827-4c83-acc9-7b0c483c630f.png)
+
+  
+  ![image](https://user-images.githubusercontent.com/81907470/180930319-bd28ce8d-9bf2-4879-b908-09648a1d7e96.png)
+
+  
 # Next Cloud
 
 ## Package upgrade & update & install
