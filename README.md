@@ -427,7 +427,7 @@ pip3 install pytesseract
 vim ocr.py
 ```
   
-```
+```python
 from pytesseract import *
 import re
 import numpy as np
@@ -457,7 +457,66 @@ print(text)
   
   ![image](https://user-images.githubusercontent.com/81907470/180930319-bd28ce8d-9bf2-4879-b908-09648a1d7e96.png)
 
+## Result 2 (jupyter)
   
+  - Added preprocessing
+     
+    - convert gray, filter2D, dilation
+  
+  ![image](https://user-images.githubusercontent.com/81907470/180964617-4a4d566b-4b17-4fd4-b9fb-4ce2c1731e80.png)
+![image](https://user-images.githubusercontent.com/81907470/180964647-2944a8a5-f1bd-4e88-9efc-7d028ec3ad4f.png)
+![image](https://user-images.githubusercontent.com/81907470/180964700-7294074b-896a-4be8-ab1f-76278cfe26e9.png)
+
+  - full code
+  
+  ```
+  import pytesseract
+import re
+import numpy as np
+import cv2
+from matplotlib import pyplot as plt
+
+#설치 위치 설정
+pytesseract.pytesseract.tesseract_cmd=r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+  
+  img = cv2.imread("./set_index.jpg", cv2.IMREAD_GRAYSCALE)
+
+x=174;y=147;w=563;h=87;
+roi = img[y:y+h, x:x+w]
+img2 = roi.copy()
+
+plt.imshow(img2, cmap="gray"), plt.axis("off") # 이미지 출력
+plt.show()
+result = pytesseract.image_to_string(img2, config='--psm 7 --oem 3 -c tessedit_char_whitelist=0123456789')
+
+print(result)
+  
+  #kernel 만들기
+
+kernel = np.array([[0,-1,0],[-1,5,-1],[0,-1,0]])
+
+# 이미지를 선명하게 한다
+
+img2 = cv2.filter2D(img2, -1, kernel)
+plt.imshow(img2, cmap="gray"), plt.axis("off") # 이미지 출력
+plt.show()
+
+result = pytesseract.image_to_string(img2, config='--psm 7 --oem 3 -c tessedit_char_whitelist=0123456789')
+
+print(result)
+  
+  def dilation(image):
+    kernel = np.ones((3,3),np.uint8)
+    img = cv2.dilate(image, kernel, iterations=1)
+    plt.imshow(img,  cmap="gray"), plt.axis("off")
+    plt.show()
+    result = pytesseract.image_to_string(img, config='--psm 7 --oem 3 -c tessedit_char_whitelist=0123456789')
+    return result
+
+result = dilation(img2)
+print(result)
+
+  ```
 # Next Cloud
 
 ## Package upgrade & update & install
