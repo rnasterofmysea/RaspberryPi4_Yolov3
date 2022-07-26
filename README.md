@@ -53,17 +53,17 @@ sudo apt-get install -y libatlas-base-dev libhdf5-dev libhdf5-serial-dev libatla
   ```python
   import cv2
 
-img = cv2.imread("<path>/lenna.png")
-cv2.imshow("Test",img)
+  img = cv2.imread("<path>/lenna.png")
+  cv2.imshow("Test",img)
 
-img_canny = cv2.Canny(img, 50, 150)
-cv2.imshow("Test img Edge", img_canny)
+  img_canny = cv2.Canny(img, 50, 150)
+  cv2.imshow("Test img Edge", img_canny)
 
-cv2.waitKey(0)
-cv2.destroyAllWindows()
-```
+  cv2.waitKey(0)
+  cv2.destroyAllWindows()
+  ```
   
- - run test.py
+- run test.py
   
   ```python
   python3 test.py
@@ -537,7 +537,7 @@ sudo nginx -s reload
   ### summary
     
     카메라 설치 후 사진의 화질이 낮아 OCR 문자인식에 장애가 발생될 것이라고 예상됨, 화질부분의 개선이 필요
-    ( 예상 원인: 에어컨 시래기에서 발생하는 진동에 의한 화질저하, 카메라 성능 등)
+    ( 예상 원인: 에어컨 실외기에서 발생하는 진동에 의한 화질저하, 카메라 성능 등)
   
 # Fix Issues 
 
