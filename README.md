@@ -361,7 +361,7 @@ raspistill -q 100 -t 1000 -w 800 -h 600 -o  /home/pi/camera/images/$DATE1/$DATE2
 ```
 # every 5 min take pic
 
-*/5 * * * * home/pi/camera/camera_config.sh
+*/5 * * * * /home/pi/camera/camera_config.sh
 
 # * * * * * /home/pi/camera/camera_config.sh
 
