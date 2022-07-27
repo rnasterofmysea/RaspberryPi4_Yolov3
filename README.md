@@ -446,7 +446,7 @@ text = pytesseract.image_to_string(img2, config='--psm 6')
 print(text)
 ```
   
-## Result
+## Result 1
   
 ```
   python3 ocr.py
@@ -517,6 +517,147 @@ result = dilation(img2)
 print(result)
 
   ```
+  
+## Result 3 (Logging system) !!final!!
+
+- path: /home/pi/camera 
+
+1. Edit camera_config.sh
+ 
+  1.1 take a image naming by datetime (.jpg file)
+  1.2 make directory naming by date & save jpg
+  1.2 run ocr.py file for ocr
+
+2. Edit ocr.py
+
+  2.1 read img & preprocessing
+  2.2 execute OCR
+  2.3 run excel.py for save value
+
+3. Make excel.py
+
+  3.1 read excel
+  3.2 save result (date, value) value to excel
+
+4. crontab -e
+
+  4.1 run shell script every 5 min
+  
+
+- camera_config.sh
+
+```
+
+#! /bin/bash
+
+DATE1=$(date +"%Y-%m-%d")
+CreateDIR=/home/pi/camera/images/$DATE1
+
+if [ ! -d $CreateDIR ]; then
+        mkdir $CreateDIR
+fi
+
+DATE2=$(date +"%Y-%m-%d_%H%M")
+raspistill -q 100 -t 1000 -w 800 -h 600 -o  /home/pi/camera/images/$DATE1/$DATE2.jpg
+
+path="/home/pi/camera/images/$DATE1/$DATE2.jpg"
+echo "$path" > /home/pi/camera/flag.txt
+
+sleep 3
+
+python3 /home/pi/camera/ocr.py
+
+```
+
+- ocr.py
+
+```
+import pytesseract
+import re
+import numpy as np
+import cv2
+import excel
+import os
+
+# 이미지 경로 불러들이기
+
+file = open("/home/pi/camera/flag.txt")
+image_path = file.readlines()[0].replace("\n","")
+print(image_path)
+# 이미지 자르기
+
+img = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
+
+x=174;y=147;w=563;h=87;
+roi = img[y:y+h, x:x+w]
+img2 = roi.copy()
+
+result = pytesseract.image_to_string(img2, config='--psm 7 --oem 3 -c tessedit_char_whitelist=0123456789')
+print(result)
+
+# kernel 만들기
+
+kernel = np.array([[0,-1,0],[-1,5,-1],[0,-1,0]])
+
+# 이미지를 선명하게 한다
+
+img3 = cv2.filter2D(img2, -1, kernel)
+
+result = pytesseract.image_to_string(img3, config='--psm 7 --oem 3 -c tessedit_char_whitelist=0123456789')
+print(result)
+
+# dilation 주기
+
+kernel = np.ones((3,3),np.uint8)
+img4 = cv2.dilate(img3, kernel, iterations=1)
+
+result = pytesseract.image_to_string(img4, config='--psm 7 --oem 3 -c tessedit_char_whitelist=0123456789')
+arr = result.split('\n')[0:-1]
+result = '\n'.join(arr)
+
+print(type(result))
+print("결과값 :: " + result)
+
+with open('text_result.txt', mode ='w') as file:
+    file.write(result)
+
+# 리스트 생성 및 excel,excel() 호출
+
+date = image_path.split('/')[-1].split('.')[0]
+print("date 출력::"+date)
+result_list = [date, result]
+excel.excel(result_list)
+
+```
+
+- excel.py
+
+```
+import pandas as pd
+
+def excel(result_list):
+    date = result_list[0]
+    value = 0
+    if (result_list[1] == ""):
+        value = 0;
+    else: value = result_list[1];
+
+    # 파일명
+    filename = "result.xlsx"
+    #엑셀파일 읽기
+    df_excel = pd.read_excel(filename, engine = "openpyxl", header = 0);
+    print(df_excel)
+    #결과값 리스트
+    result_df = pd.DataFrame({'날짜':[date],'결과값':[value]})
+    print(result_df)
+    #엑셀파일에 값 추가
+    df_excel = pd.concat([df_excel, result_df])
+    #df_excel.drop(['Unnamed: 0'], axis = 1 ,inplace = True)
+    #엑셀파일에 저장
+    print(df_excel)
+    df_excel.to_excel('result.xlsx',index=False)
+
+```
 # Next Cloud
 
 ## Package upgrade & update & install
