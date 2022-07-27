@@ -2,11 +2,13 @@
 
 ## HardWare Spec
   - Raspberry Pi 4 + SSD
+  - Raspberry Pi 3B+
   - Samsung SC-FD110B FHD (Camera)
-  - Raspberry pi Camera module
-  - 
+  - Raspberry pi Camera module v.2.1 (element14)
+ 
 ## Server Envrionment
   - Rasbian (Raspberry Pi 4)
+  - Ubuntu LTS 20.04
 
 ## Step 1. Install Opencv
 
