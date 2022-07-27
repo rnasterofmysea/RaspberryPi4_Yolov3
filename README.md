@@ -658,10 +658,23 @@ def excel(result_list):
     df_excel.to_excel('result.xlsx',index=False)
 
 ```
+  
+![image](https://user-images.githubusercontent.com/81907470/181185716-72e643ec-699f-4488-9dcf-9ae7479cecda.png)
+
+![image](https://user-images.githubusercontent.com/81907470/181185824-a3c0151c-bc8b-4c64-ad11-8cd6e1c1b87e.png)
+
+  
+### Sammary
+  
+  - need to intergrate [result 2] with [result 3]
+  - meaningful ocr result is only return in jupyter envrionment
+  - need to set juypyter encrionmet in ubuntu server of find other ways
+  
 # Next Cloud
 
 ## Package upgrade & update & install
 
+  
 ```
 sudo apt upgrade
 sudo apt update
@@ -871,8 +884,16 @@ sudo nginx -s reload
     
     카메라 설치 후 사진의 화질이 낮아 OCR 문자인식에 장애가 발생될 것이라고 예상됨, 화질부분의 개선이 필요
     ( 예상 원인: 에어컨 시래기에서 발생하는 진동에 의한 화질저하, 카메라 성능 등)
-    >> fixed
+    >> fixed 카메라 초점 문제 였음
   
+## 3. Custom trainning result
+  
+    ![image](https://user-images.githubusercontent.com/81907470/181186500-532e92d7-4bce-47f7-bf68-21e0ef0d9a74.png)
+
+    ![image](https://user-images.githubusercontent.com/81907470/181186600-0be52f34-8e17-442a-b194-d1c98f4529c9.png)
+
+    - 학습에 많은 시간이 걸림  약 4일) > 중단시키고 학습된 weight를 테스트 해보았으나 유의미한 결과가 도출되지않음
+    - google colab을 이용하여 weight를 학습시킨 후 weight 파일을 서버로 옮겨 테스트를 진행할 예정
 # Fix Issues 
 
 ## [Open CV] Import Error: numpy.core.multiarray failed to import
