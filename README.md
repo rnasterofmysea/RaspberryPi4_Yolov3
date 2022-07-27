@@ -150,6 +150,9 @@ chmod u+x ./linux_mark.sh
   
   - https://kdx.kr/data/view/31083
   
+  ![image](https://user-images.githubusercontent.com/81907470/181196780-49eed608-61c2-41cc-9d6b-1fc00ae99f4a.png)
+
+
   ## How to use Yolo_Mark
   
   https://github.com/AlexeyAB/Yolo_mark
@@ -891,9 +894,10 @@ sudo nginx -s reload
     ![image](https://user-images.githubusercontent.com/81907470/181186500-532e92d7-4bce-47f7-bf68-21e0ef0d9a74.png)
 
     ![image](https://user-images.githubusercontent.com/81907470/181186600-0be52f34-8e17-442a-b194-d1c98f4529c9.png)
+  
+- 학습에 많은 시간이 걸림  약 4일) > 중단시키고 학습된 weight를 테스트 해보았으나 유의미한 결과가 도출되지않음
+- google colab을 이용하여 weight를 학습시킨 후 weight 파일을 서버로 옮겨 테스트를 진행할 예정
 
-    - 학습에 많은 시간이 걸림  약 4일) > 중단시키고 학습된 weight를 테스트 해보았으나 유의미한 결과가 도출되지않음
-    - google colab을 이용하여 weight를 학습시킨 후 weight 파일을 서버로 옮겨 테스트를 진행할 예정
 # Fix Issues 
 
 ## [Open CV] Import Error: numpy.core.multiarray failed to import
@@ -947,3 +951,28 @@ $CONFIG = array (
 https://community.element14.com/products/raspberry-pi/f/forum/46625/raspiberry-pi-camera-module-error---mmal-mmal_vc_component_enable-failed-to-enable-component-enospc
 
 ![image](https://user-images.githubusercontent.com/81907470/180176931-b5a8b33f-f8d5-4fe9-a4d2-fbf4fc4291db.png)
+
+## [Pandas to Excel] Unamed column auto create
+
+- Before convert & save to excel , delete 'Unnamed : 0'
+- #df_excel.drop(['Unnamed: 0'], axis = 1 ,inplace = True)
+
+```
+    # 파일명
+    filename = "result.xlsx"
+    #엑셀파일 읽기
+    df_excel = pd.read_excel(filename, engine = "openpyxl", header = 0);
+    print(df_excel)
+    #결과값 리스트
+    result_df = pd.DataFrame({'날짜':[date],'결과값':[value]})
+    print(result_df)
+    #엑셀파일에 값 추가
+    df_excel = pd.concat([df_excel, result_df])
+    #df_excel.drop(['Unnamed: 0'], axis = 1 ,inplace = True)
+    #엑셀파일에 저장
+    print(df_excel)
+    df_excel.to_excel('result.xlsx',index=False)
+
+```
+
+
