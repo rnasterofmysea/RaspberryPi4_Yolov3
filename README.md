@@ -907,7 +907,7 @@ sudo nginx -s reload
   - check numpy version
   
   ```
-  pip3 install -U
+  pip3 install -U numpy
   ```
   
 ## [Open CV] Package opencv was not found in the pkg-config search path
