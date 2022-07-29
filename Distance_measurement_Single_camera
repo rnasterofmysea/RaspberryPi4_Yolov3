@@ -29,3 +29,9 @@ git clone https://github.com/Asadullah-Dal17/Distance_measurement_using_single_c
 # 3. Flask Api to display opencv
 
 https://medium.datadriveninvestor.com/video-streaming-using-flask-and-opencv-c464bf8473d6
+
+```
+$ pip3 install virtualenv
+$ sudo apt install python3-opencv
+$ pip3 install Flask
+```
