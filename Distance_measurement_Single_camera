@@ -31,7 +31,28 @@ git clone https://github.com/Asadullah-Dal17/Distance_measurement_using_single_c
 https://medium.datadriveninvestor.com/video-streaming-using-flask-and-opencv-c464bf8473d6
 
 ```
-$ pip3 install virtualenv
+$ pip install virtualenv
+$ virtualenv Videorecognition
+$ source Videorecognition/bin/activate
+```
+
+- if needed
+
+```
 $ sudo apt install python3-opencv
+```
+
+```
 $ pip3 install Flask
+```
+
+- Program Structure 
+
+```
+├── VideoStreaming/
+│   ├── camera.py
+│   ├── main.py
+│   ├── haarcascade_frontalface_alt2.xml
+│   ├── templates/
+│   │   ├── index.html
 ```
