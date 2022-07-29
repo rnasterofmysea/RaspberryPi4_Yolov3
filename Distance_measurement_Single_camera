@@ -5,16 +5,23 @@
   1. Using prepared 'Haar Cascade' with opencv.
   2. Using trained 'Yolo' 
 
-#  1. Using prepared 'Haar Cascade' with opencv.
+- Flask API to display opencv (camera streaming)
+
+# 1. Using prepared 'Haar Cascade' with opencv.
 
 ## reference
 
-- <https://github.com/Asadullah-Dal17/Distance_measurement_using_single_camera.git>
+- https://github.com/Asadullah-Dal17/Distance_measurement_using_single_camera.git
 
-- <https://webnautes.tistory.com/1352>
+- https://webnautes.tistory.com/1352
 
 # 2. Using trained 'Yolo'
 
 ## reference
 
-- <https://github.com/Asadullah-Dal17/Yolov4-Detector-and-Distance-Estimator>
+- https://github.com/Asadullah-Dal17/Yolov4-Detector-and-Distance-Estimator
+
+
+# 3. Flask Api to display opencv
+
+https://medium.datadriveninvestor.com/video-streaming-using-flask-and-opencv-c464bf8473d6
