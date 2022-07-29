@@ -1,4 +1,19 @@
-#reference
+# Summary
+
+- There are 2 ways to dectect and measure distance between objets or human.
+  
+  1. Using prepared 'Haar Cascade' with opencv.
+  2. Using trained 'Yolo' 
+
+#  1. Using prepared 'Haar Cascade' with opencv.
+
+## reference
 
 https://github.com/Asadullah-Dal17/Distance_measurement_using_single_camera.git
+https://webnautes.tistory.com/1352
 
+# 2. Using trained 'Yolo'
+
+## reference
+
+https://github.com/Asadullah-Dal17/Yolov4-Detector-and-Distance-Estimator
