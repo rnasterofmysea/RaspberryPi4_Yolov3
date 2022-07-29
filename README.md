@@ -527,26 +527,26 @@ print(result)
 
 - path: /home/pi/camera 
 
-1. Edit camera_config.sh
+### 1. Edit camera_config.sh
  
-  1.1 take a image naming by datetime (.jpg file)
-  1.2 make directory naming by date & save jpg
-  1.2 run ocr.py file for ocr
+  - 1.1 take a image naming by datetime (.jpg file)
+  - 1.2 make directory naming by date & save jpg
+  - 1.2 run ocr.py file for ocr
 
-2. Edit ocr.py
+### 2. Edit ocr.py
 
-  2.1 read img & preprocessing
-  2.2 execute OCR
-  2.3 run excel.py for save value
+  - 2.1 read img & preprocessing
+  - 2.2 execute OCR
+  - 2.3 run excel.py for save value
 
-3. Make excel.py
+### 3. Make excel.py
 
-  3.1 read excel
-  3.2 save result (date, value) value to excel
+  - 3.1 read excel
+  - 3.2 save result (date, value) value to excel
 
-4. crontab -e
+### 4. crontab -e
 
-  4.1 run shell script every 5 min
+  - 4.1 run shell script every 5 min
   
 
 - camera_config.sh
