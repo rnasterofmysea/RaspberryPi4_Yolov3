@@ -8,7 +8,7 @@
  
 ## Server Envrionment
   - Rasbian (Raspberry Pi 4)
-  - Ubuntu LTS 20.04
+  - Ubuntu LTS 20.04.0
 
 ## Step 1. Install Opencv
 
