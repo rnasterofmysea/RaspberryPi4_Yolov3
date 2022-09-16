@@ -10,6 +10,9 @@ sudo apt update
 sudo apt install nginx mariadb-server php php-fpm php-mysql php-zip php-common php-zip php-xml php-mbstring php-gd php-curl -y
 ```
 
+
+
+
 ## Check packages
 
 - check raspberry pi IP address
@@ -50,6 +53,8 @@ MariaDB [(none)]> GRANT ALL PRIVILEGES ON nextcloud.* TO 'nextcloud'@'localhost'
 ```
 quit
 ```
+![image](https://user-images.githubusercontent.com/90185805/190652682-ec5dc013-bc73-495f-bce6-d3426a8153ee.png)
+
 
 ## Install NextCloud
 
@@ -68,16 +73,22 @@ sudo chown -R www-data:www-data /var/www/html
 ```
 
 ## Nginx setting
+- php 버전 확인 
+```
+php -v
+```
+![image](https://user-images.githubusercontent.com/90185805/190646402-1d7eec5a-a14f-414a-afb6-c3340b751e7b.png)
 
 ```
 sudo nano /etc/nginx/sites-enabled/default
 ```
 
-- delete code > copy & paste 
+- delete code > copy & paste
 
-```
+
+```nginx
 upstream php-handler {
-    server unix:/var/run/php/php7.4-fpm.sock;
+    server unix:/var/run/php/php8.1-fpm.sock;
 }
 
 server {
@@ -175,8 +186,48 @@ sudo nginx -s reload
 ```
 
 ## Check Nginx
+- nginx 상태 확인
+```
+service nginx status
+```
 
-![image](https://user-images.githubusercontent.com/81907470/180174568-7d555cab-84fe-49bd-bbe8-c73274b3a416.png)
+![image](https://user-images.githubusercontent.com/90185805/190648530-77738125-a43b-4e92-93c6-722ec7cb4959.png)
+
+- http://도메인 주소 또는 IP
+```
+http://127.0.0.1/
+
+http://localhost/
+```
+![image](https://user-images.githubusercontent.com/90185805/190655561-e73bfca0-f13d-4df3-af0e-256a41fa1b59.png)
 
 
-![image](https://user-images.githubusercontent.com/81907470/180174494-4cccb544-cab2-4ac0-9c5a-c27463bd7c63.png)
+## nextcloud와 로컬PC 연동
+
+- 로컬PC의 nextlcoud 실행 후 프로필 => 설정
+
+![image](https://user-images.githubusercontent.com/90185805/190653934-994dbb79-900b-4b92-8e32-20721733394f.png)
+
+- 동기화 폴더 연결 추가
+
+![image](https://user-images.githubusercontent.com/90185805/190653975-a5ef5c95-e46c-4ec9-b1c7-b88fb4f2f62c.png)
+
+- 동기화 할 로컬 폴더 선택
+
+![image](https://user-images.githubusercontent.com/90185805/190654016-aee03819-620a-4780-9479-572898a50cf7.png)
+
+- nextcloud의 원격 대상 폴더 선택
+
+![image](https://user-images.githubusercontent.com/90185805/190654057-7d2ac610-3dfd-4cf8-a4fa-ee41415b1b72.png)
+
+- 동기화하지 않을 원격 폴더 선택
+
+![image](https://user-images.githubusercontent.com/90185805/190654203-3a0baaea-4502-4845-b4c5-57abb891ac7b.png)
+
+- nextcloud와 로컬 PC 연동 완료
+
+![image](https://user-images.githubusercontent.com/90185805/190654247-7c4fd149-ad28-443c-aa3d-2889125da56e.png)
+
+- 동기화 확인
+
+![image](https://user-images.githubusercontent.com/90185805/190654278-7219624b-e447-4ac3-b4d9-4027ba5296db.png)
